@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsung Yen Hseih</title>
+   
+    <link rel="stylesheet" href="./style/navigationBar.css">
+    
+    <style type="text/css"> 
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap");
+        @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+        @import url("style/banner.css");
+        @import url("style/experience.css");
+        @import url("style/specialty.css");
+        @import url("style/about.css");
+        :root {
+            /* --main-color: #E7F2A7; */
+            --main-color: #CAEDEB;
+            --second-color: #244259;
+            --third-color: #008C99;
+            --fourth-color: #ECB783;
+            /* #405791 #244259 */
+            /* 對比色 #FF7752 */
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .area-title{
+            padding-top: 200px;
+        }
+       
+        
+        .main-contact{
+            margin-top: 50px;
+            height: 109px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: var(--main-color);
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            background-color: #cbcbcb;
+        }
+        @media screen and (max-width: 650px){
+            .area-title{
+                padding-top: 90px;
+            }
+        }
+        
+    </style>
+    <script type="text/javascript">
+        function clickNav() {
+            if (document.querySelector(".nav-menu").style.display === 'none' || document.querySelector(".nav-menu").style.display === '' ) {
+                document.querySelector(".nav-menu").style.display = 'flex';
+                document.querySelector(".nav-menu").classList.add("nav-transition");
+            } else {
+                document.querySelector(".nav-menu").style.display = 'none';
+                document.querySelector(".nav-menu").classList.remove("nav-transition");
+            }
+            
+        }
+
+        // 標題隨功能更改
+        function clickNavItem(event) {
+            document.getElementById("nav-title").innerHTML = event.innerText
+            document.querySelector(".nav-menu").style.display = 'none';
+            document.querySelector(".nav-menu").classList.remove("nav-transition");
+        
+        }
+        
+        window.onload = function () {
+            var earthImg = document.getElementById("header")
+            var currentScroll = window.scrollY
+
+            function changeTitle() {
+                var bodyScroll = document.documentElement.scrollTop || document.body.scrollTop
+
+                var ban = document.getElementById("banner").scrollHeight
+                var about = document.getElementById("about").scrollHeight
+                var experience = document.getElementById("experience").scrollHeight
+                // var specialty = document.getElementById("specialty").scrollHeight
+
+                switch (true) {
+                    case bodyScroll < ban :
+                        document.getElementById("nav-title").innerHTML = "Home"
+                        break;
+                    case bodyScroll > ban && bodyScroll < (ban + about):
+                        document.getElementById("nav-title").innerHTML = "About Me"
+                        break;
+                    case bodyScroll < (ban + about + experience) && bodyScroll > (ban + about):
+                        document.getElementById("nav-title").innerHTML = "Experience"
+                        break;
+                    case bodyScroll > (ban + about + experience) :
+                        document.getElementById("nav-title").innerHTML = "Specialty"
+                        break;
+                }
+            }
+            
+            function timelineMove(){
+
+                var bodyScroll = document.documentElement.scrollTop || document.body.scrollTop
+                
+                var ban = document.getElementById("banner").scrollHeight
+                var about = document.getElementById("about").scrollHeight
+                var sumScroll = ban + about
+                var sumScroll1 = document.getElementById("timeline-itme1").scrollHeight
+                var sumScroll2 = document.getElementById("timeline-itme2").scrollHeight
+                var sumScroll3 = document.getElementById("timeline-itme3").scrollHeight
+                var sumScroll4 = document.getElementById("timeline-itme4").scrollHeight
+                var sumScroll5 = document.getElementById("timeline-itme5").scrollHeight
+            
+                switch (true) {
+                    case bodyScroll > (ban + about + sumScroll1 + sumScroll2 + sumScroll3 + sumScroll4 + sumScroll5) :
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+
+                        document.querySelector("#timeline-itme5a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme5a p").style.color = "#666";
+                        document.querySelector("#timeline-itme5a").style.backgroundColor = "#fff";
+                        break;
+                    case bodyScroll >= (ban + about + sumScroll1+ sumScroll2+ sumScroll3+ (sumScroll4/2) ) &&  bodyScroll < (ban + about + sumScroll1 + sumScroll2 + sumScroll3 + sumScroll4 + sumScroll5) :
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme5a h2").style.color = "#fff";
+                        document.querySelector("#timeline-itme5a p").style.color = "#fff";
+                        document.querySelector("#timeline-itme5a").style.backgroundColor = "var(--third-color)";
+
+                        document.querySelector("#timeline-itme4a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme4a p").style.color = "#666";
+                        document.querySelector("#timeline-itme4a").style.backgroundColor = "#fff";
+                        break;
+                    case bodyScroll >= (ban + about + sumScroll1 + sumScroll2  + (sumScroll3 / 2)) && bodyScroll < (ban + about + sumScroll1 + sumScroll2 + sumScroll3 + sumScroll4 ) :
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme4a h2").style.color = "#fff";
+                        document.querySelector("#timeline-itme4a p").style.color = "#fff";
+                        document.querySelector("#timeline-itme4a").style.backgroundColor = "var(--third-color)";
+
+                        document.querySelector("#timeline-itme3a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme3a p").style.color = "#666";
+                        document.querySelector("#timeline-itme5a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme5a p").style.color = "#666";
+                        document.querySelector("#timeline-itme3a").style.backgroundColor = "#fff";
+                        document.querySelector("#timeline-itme5a").style.backgroundColor = "#fff";
+                        
+                        break;
+                    case bodyScroll >= (ban + about + sumScroll1  + (sumScroll2 / 2)) && bodyScroll < (ban + about + sumScroll1 + sumScroll2 + sumScroll3 ):
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme3a").style.backgroundColor = "var(--third-color)";
+                        document.querySelector("#timeline-itme3a h2").style.color = "#fff";
+                        document.querySelector("#timeline-itme3a p").style.color = "#fff";
+
+
+                        document.querySelector("#timeline-itme2a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme2a p").style.color = "#666";
+                        document.querySelector("#timeline-itme4a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme4a p").style.color = "#666";
+                        document.querySelector("#timeline-itme2a").style.backgroundColor = "#fff";
+                        document.querySelector("#timeline-itme4a").style.backgroundColor = "#fff";
+                        break;
+                    case bodyScroll >= (ban + about + (sumScroll1 / 2)) && bodyScroll < (ban + about + sumScroll1 + sumScroll2):
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme1a").style.backgroundColor = "#fff";
+                        document.querySelector("#timeline-itme3a").style.backgroundColor = "#fff";
+                        document.querySelector("#timeline-itme1a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme1a p").style.color = "#666";
+                        document.querySelector("#timeline-itme3a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme3a p").style.color = "#666";
+
+                        document.querySelector("#timeline-itme2a").style.backgroundColor = "var(--third-color)";
+                        document.querySelector("#timeline-itme2a h2").style.color = "#fff";
+                        document.querySelector("#timeline-itme2a p").style.color = "#fff";
+
+                        
+                        break;
+                    case bodyScroll >= ((ban + about) / 5 * 3.5) && bodyScroll < (ban + about + sumScroll1) :
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme1a h2").style.color = "#fff";
+                        document.querySelector("#timeline-itme1a p").style.color = "#fff";
+                        document.querySelector("#timeline-itme1a").style.backgroundColor = "var(--third-color)";
+
+                        document.querySelector("#timeline-itme2a").style.backgroundColor = "#fff";
+                        document.querySelector("#timeline-itme2a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme2a p").style.color = "#666";
+                        break;
+                    case bodyScroll < (ban + about) :
+                        var css = document.getElementById('css');
+                        var c = css.sheet;
+                        document.querySelector("#timeline-itme1a h2").style.color = "#333";
+                        document.querySelector("#timeline-itme1a p").style.color = "#666";
+                        document.querySelector("#timeline-itme1a").style.backgroundColor = "#fff";
+                        break;
+                
+                }
+            }
+
+            function earthmove() {
+                if (window.scrollY != 0) {
+                    document.getElementById("logo").style.visibility = "visible";
+                }
+                if (window.scrollY > currentScroll) {
+                    earthImg.classList.remove('main-header-cancle');
+                    earthImg.classList.add('main-header-fixed');
+                } else {
+                
+                    if (currentScroll < 700) {
+                        earthImg.classList.remove('main-header-fixed');
+                        earthImg.backgroundColor = "rgb(202, 237, 235)";
+                        earthImg.classList.add('main-header-cancle');
+                        document.getElementById("logo").style.visibility = "hidden";
+                    } else {
+                        earthImg.backgroundColor = "rgb(202, 237, 235)";
+                    }
+                }
+                currentScroll = window.scrollY
+
+            }
+            window.addEventListener('scroll', earthmove);
+            window.addEventListener('touchmove', timelineMove);
+            window.addEventListener('touchmove', changeTitle);
+            
+        }
+        
+        
+    </script>
+</head>
+<body>
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo" id="logo">
+                <img src="./image/logo1.PNG" alt="logo">
+            </a>
+            <nav class="main-nav">
+                <a href="#about" >About Me</a>
+                <a href="#experience">Experince</a>
+                <a href="#specialty">Specialty</a>
+            </nav>
+        </div>
+        
+        <div class="header-navigation">
+            <a href="#" class="logo" id="logo">
+                <img src="./image/logo1.PNG" alt="logo">
+            </a>
+            <span id="nav-title">Home</span>
+            <button class="navigation-icon" onclick="clickNav()" style="border:none;background:none"><i class="fa fa-bars"></i></button>
+        </div>
+     
+        <nav class="nav-menu">
+            <a href="#about" onclick="clickNavItem(this)">About Me</a>
+            <a href="#experience" onclick="clickNavItem(this)">Experince</a>
+            <a href="#specialty" onclick="clickNavItem(this)">Specialty</a>
+        </nav>
+
+    </header>
+    <div class="banner" id="banner">
+        <div class="conainer">
+            <div style="display: flex;">
+                <img src="./image/index.jpg" class="conainer-img" style=" width: 80%;    margin: auto;" alt="logo">
+            </div>
+            <div class="banner-text">
+                <h1>
+                    Tsung Yen Hseih
+                    <small>
+                        國立高雄海洋科技大學
+                    </small>
+                </h1>
+                <h2>National Kaohsiung Marine University</h2>
+                <p>
+                    Department of Naval Architecture and Ocean Engineering
+                    <br>
+                    造船及海洋工程
+                </p>
+            </div>
+        </div>
+    </div>
+   
+    <div class="main-about" id="about">
+        <h1 class="area-title">About Me</h1>
+        <div class="about">
+    
+            <div class="about-img">
+                <img src="./image/about.jpg" alt="yen">
+    
+            </div>
+            <div class="about-contain">
+                <p>
+                    從⼩父母以民主溝通和開放的方式教育我們，讓我們在關愛、健康環境中成長，培養獨立自主、積極主動、負責的生活態度。
+                </p><br>
+                <p>
+                    我的興趣廣泛，喜歡學習新事物。從小對汽車有興趣，覺得汽機車是一個尊貴神秘的機械結構。自己也會參考汽機車的相關維修書籍以及節目，最喜歡美國節目的「翻新中古車」及「肌肉車大對決」，節目中汽車與人類生活是密不可分，也看到主持人對汽車的專業水準及工作熱忱。
+                </p><br>
+                <p>
+                    我的個性較隨和、樂觀，做事情有責任感。並且喜歡聽取別人的意見，藉由吸收不同的經驗，再加上自己獨立思考，這樣能讓自己更迅速的成長。
+                </p>
+            </div>
+        </div>
+    
+    </div>
+    <div class="main-experience" id="experience">
+        <style id="css"></style>
+        <h1 class="area-title">EXPERIENCE</h1>
+        <ul class="timeline">
+            <li  id="timeline-itme1">
+                <a href="#" id="timeline-itme1a">
+                    <h2>中華汽車- 零品專員</h2>
+                    
+                    <p id="itme1">
+                        1.負責供應商部品，如:門窗升降機、門鎖扣、尾門撐桿、煞車部品卡鉗、避震器、傳動軸、螺絲螺帽類等等<br>
+                        2.供應商工程監察與稽核<br>
+                        3.量產/售服部品不良解析<br>
+                        4.新開發車型部品導入<br>
+                        5.輔導供應商執行示範製程線</p>
+                </a>
+            </li>
+            <li id="timeline-itme2">
+                <a href="#" id="timeline-itme2a">
+                    <h2>友達光電- 設備工程師</h2>
+                    <p id="itme2">
+                        1.設備切割機製程參數調整<br>
+                        2.維護現場面板產品的生產良率及產能<br>
+                        3.設備切割機零件維修與保養<br>
+                        4.分析當天產品生產良率等情形<br>
+                        5.設備產品品質提升改善提案<br><br><br></p>
+                </a>
+            </li>
+            <li id="timeline-itme3">
+                <a href="#" id="timeline-itme3a">
+                    <h2>上銀科技- 機構工程師</h2>
+                    <p id="itme3">
+                        1.產品研究設計<br>
+                        2.專案產品BOM建立與維護<br>
+                        3.量產產品改善<br>
+                        4.產品量產前測試<br>
+                        5.工程圖繪製<br>
+                        6.工程客服計算<br>
+                        7.產品簡報講解<br>
+                        8.專利提案</p>
+                </a>
+            </li>
+            <li id="timeline-itme4">
+                <a href="#" id="timeline-itme4a">
+                    <h2>高海科大- 造船及海洋工程</h2>
+                    <p id="itme4">
+                        1.參加: ICCE-20國際研討會<br>
+                        2.論文: 複合材料CLD最佳化之研究<br>
+                        3.MATLAB、ANSYS、FORTRAN<br>
+                        <br><br>
+                        <br><br>
+                        <br>
+                    </p>
+                </a>
+            </li>
+            <li id="timeline-itme5">
+                <a href="#" id="timeline-itme5a">
+                    <h2>高海科大- 造船系</h2>
+                    <p id="itme5">
+                        1.畢業專題<br>
+                        學習團隊合作完成專案，及訓練自己上台報告的能力及膽量。<br>
+                        2.搖滾音樂社<br>
+                        給自己足夠的自信心以及團隊默契<br>
+                        <br><br>
+                      
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+ 
+    <div class="main-specialty"  id="specialty">
+        <h1 class="area-title">SPECIALTY</h1>
+        <div class="specialty">
+            <div class="item">
+                <div class="icon">
+                    <i class="fa fa-code"></i>
+                </div>
+                <div class="txt">
+                    <h3>程式設計類</h3>
+                    <p>FORTRAN、Matlab</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="icon">
+                    <i class="fa fa-edit"></i>
+                </div>
+                <div class="txt">
+                    <h3>工程製圖類</h3>
+                    <p>AutoCAD、Inventor、SolidWorks</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="icon">
+                    <i class="fa fa-chart-line"></i>
+                </div>
+                <div class="txt">
+                    <h3>其他</h3>
+                    <p>Excel、Ansys</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="icon">
+                    <i class="fa fa-address-card"></i>
+                </div>
+                <div class="txt">
+                    <h3>證照</h3>
+                    <p>品質技術師(CQT)、丙級測量技術士、丙級建築製圖技術士</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-contact">
+        <H3>Contact</H3>
+        <div>
+            <div>  <i class="fa fa-envelope"></i> Mail </div>
+            <div>gto9900880@yahoo.com.tw</div>
+        </div>
+    </div>
+
+    <footer>
+        COPYRIGHT © 2021
+    </footer>
+</body>
+</html>

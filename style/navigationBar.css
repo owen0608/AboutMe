@@ -1,0 +1,129 @@
+.main-header a {
+    text-decoration: none;
+}
+
+@media screen and (min-width: 700px) {
+    .header-navigation,
+    .nav-menu{
+        display: none;
+    }
+    .main-header{
+        background-color: #fff;
+        position:fixed; /*static;*/
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .main-header .header-container {
+        display: flex;
+        padding: 20px;
+        /* max-width: 1200px; */
+        margin: auto;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .main-header .logo{
+        width: 80px;
+    }
+    .main-header .logo img {
+        width: 100%;
+        vertical-align: middle;
+        border-radius: 50%;
+    }
+
+    .main-header .main-nav a{
+       
+        color:var(--second-color);
+        padding:  5px 1em;
+        transition: background-color 2s ease-out;
+        position: relative;
+    }
+    .main-header .main-nav a::after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: -5px;
+        height: 0;
+        border-bottom: 1px solid var(--second-color);
+        transition: .3s;
+    }
+
+    .main-header .main-nav a:hover{
+        color: #929292;
+    }
+    .main-header .main-nav a:hover::after{
+        left: 0;
+        right: 0;
+
+    }
+
+    .main-header-fixed{
+        background-color: #CAEDEB;
+        transition: background-color 2s ease-out;
+    }
+    .main-header-fixed-cancle{
+        background-color: #fff;
+        transition: background-color 0.05s ease-out;
+    }
+    .logo{
+        visibility:hidden;
+    } 
+}
+
+@media screen and (max-width: 650px){ /*400*/
+    .header-container{
+        display: none;
+       
+    }
+    
+    
+    .nav-transition {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        position:fixed; 
+        z-index: 10;
+        /* 固定，但會因為固定導致寬度不同 故使用width:100% */
+    }
+    
+    .header-navigation{
+        padding: 20px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top:0;
+        left: 0;
+        right: 0;
+        position: fixed;
+        background: var(--main-color);
+         z-index: 10;
+
+    }
+    .header-navigation .logo{
+        width: 50px;
+    }
+    .header-navigation .logo img {
+        width: 100%;
+        vertical-align: middle;
+        border-radius: 50%;
+    }
+    .nav-menu{
+        display: none;
+        /* flex-direction: column; */
+    }
+    .nav-menu a{
+        height: 40px;
+        background-color: var(--main-color);
+        border-bottom: 1px solid var(--second-color);
+        /* 垂直置中 */
+        display: flex;
+        align-items: center;
+    }
+
+   
+}

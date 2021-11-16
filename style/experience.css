@@ -1,0 +1,180 @@
+.main-experience .timeline a {
+    display: block;
+    text-decoration: none;
+    border-color: #fff;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #888;
+}
+
+/* 職務底下的線 */
+.main-experience .timeline p::before {
+    content: '';
+    display: block;
+    height: 2px;
+    margin: 10px 0;
+    background-color: #aaa;
+
+}
+
+.main-experience .timeline h2 {
+    color: #333;
+    font-weight: 700;
+}
+
+.main-experience .timeline p {
+    color: #666;
+    font-weight: 100;
+}
+
+/* 職務底下的線-動畫 */
+@keyframes changeLineWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .main-experience {
+        width: 900px;
+        margin: auto;
+    }
+
+    .main-experience::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 0px;
+        clear: both;
+    }
+
+    .main-experience .timeline {
+        padding: 50px 0 200px;
+    }
+
+    .main-experience .timeline li {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 20px 0;
+        position: relative;
+    }
+
+    .main-experience .timeline li:nth-child(odd) {
+        float: left;
+        padding-right: 100px;
+    }
+
+    .main-experience .timeline li:nth-child(even) {
+        float: right;
+        padding-left: 100px;
+        transform: translateY(50%);
+    }
+
+    .main-experience .timeline li:nth-child(odd)::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+        right: 0;
+        z-index: -1;
+    }
+
+    .main-experience .timeline li:last-child::after {
+        /*最後一組 高度只要設一辦就好，比較漂亮*/
+        height: 80%;
+    }
+
+    .main-experience .timeline li::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #aaa;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .main-experience .timeline li:nth-child(odd)::before {
+        right: -9.5px;
+    }
+
+    .main-experience .timeline li:nth-child(even)::before {
+        left: -10.5px;
+    }
+
+
+   
+
+    .main-experience .timeline a:hover {
+        background-color: var(--third-color);
+
+    }
+
+   
+
+    .main-experience .timeline a:hover p::before {
+        background-color: var(--fourth-color);
+        animation-name: changeLineWidth;
+        animation-duration: 1.5s;
+
+    }
+
+    
+
+
+    .main-experience .timeline a:hover h2,
+    .main-experience .timeline a:hover p {
+        color: #fff;
+    }
+
+   
+
+    .main-experience .timeline h2::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 1px;
+        background-color: #aaa;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .main-experience .timeline li:nth-child(odd) h2::after {
+        right: 0;
+    }
+
+    .main-experience .timeline li:nth-child(even) h2::after {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+   
+    .timeline {
+        width: 80%;
+        margin: auto; 
+    }
+    ul.timeline li {
+        margin: 20px;
+    }
+
+    .main-experience1 .timeline a p::before {
+        background-color: var(--fourth-color);
+        animation-name: changeLineWidth;
+        animation-duration: 1.5s;
+
+    }
+
+}
